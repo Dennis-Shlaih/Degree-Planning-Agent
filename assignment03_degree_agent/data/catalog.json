@@ -1,0 +1,18 @@
+{
+  "CSCI 110": {"title": "Programming Fundamentals", "credits": 4, "prerequisites": [], "min_grade": null, "offered": ["Fall", "Spring"]},
+  "CSCI 210": {"title": "Data Structures", "credits": 4, "prerequisites": [["CSCI 110"]], "min_grade": "C", "offered": ["Fall", "Spring"]},
+  "CSCI 230": {"title": "Computer Organization", "credits": 3, "prerequisites": [["CSCI 110"]], "min_grade": "C", "offered": ["Fall", "Spring"]},
+  "CSCI 310": {"title": "Algorithms", "credits": 3, "prerequisites": [["CSCI 210"], ["MATH 220"]], "min_grade": "C", "offered": ["Spring"]},
+  "CSCI 320": {"title": "Database Systems", "credits": 3, "prerequisites": [["CSCI 210"]], "min_grade": "C", "offered": ["Spring"]},
+  "CSCI 330": {"title": "Operating Systems", "credits": 3, "prerequisites": [["CSCI 210"], ["CSCI 230"]], "min_grade": "C", "offered": ["Fall"]},
+  "CSCI 340": {"title": "Software Engineering", "credits": 3, "prerequisites": [["CSCI 210"]], "min_grade": "C", "offered": ["Fall", "Spring"]},
+  "CSCI 350": {"title": "Machine Learning", "credits": 3, "prerequisites": [["CSCI 210"], ["STAT 205", "MATH 250"]], "min_grade": "C", "offered": ["Spring"]},
+  "MATH 120": {"title": "Calculus I", "credits": 4, "prerequisites": [], "min_grade": null, "offered": ["Fall", "Spring"]},
+  "MATH 220": {"title": "Discrete Mathematics", "credits": 3, "prerequisites": [["MATH 120"]], "min_grade": null, "offered": ["Fall", "Spring"]},
+  "MATH 230": {"title": "Calculus II", "credits": 4, "prerequisites": [["MATH 120"]], "min_grade": null, "offered": ["Fall", "Spring"]},
+  "MATH 250": {"title": "Linear Algebra", "credits": 3, "prerequisites": [["MATH 120"]], "min_grade": null, "offered": ["Fall", "Spring"]},
+  "STAT 205": {"title": "Introductory Statistics", "credits": 3, "prerequisites": [], "min_grade": null, "offered": ["Fall", "Spring"]},
+  "ENG 101": {"title": "College Writing", "credits": 3, "prerequisites": [], "min_grade": null, "offered": ["Fall", "Spring"]},
+  "ENG 210": {"title": "Technical Writing", "credits": 3, "prerequisites": [["ENG 101"]], "min_grade": null, "offered": ["Fall", "Spring"]},
+  "PHIL 120": {"title": "Ethics and Technology", "credits": 3, "prerequisites": [], "min_grade": null, "offered": ["Spring"]}
+}

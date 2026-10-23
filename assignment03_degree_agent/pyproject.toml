@@ -1,0 +1,19 @@
+[project]
+name = "assignment03-degree-agent"
+version = "0.1.0"
+description = "CSCI 395.32 AI Agents, Assignment 3: a degree-planning agent"
+requires-python = ">=3.12"
+dependencies = [
+    "langchain>=1.4,<2",
+    "langchain-openai>=1.1,<2",
+    "pydantic>=2.7,<3",
+    "python-dotenv>=1.0,<2",
+    "jupyterlab>=4.2,<5",
+    "ipykernel>=6.29,<8",
+]
+
+[dependency-groups]
+dev = ["pytest>=8,<9"]
+
+[tool.uv]
+package = false

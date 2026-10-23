@@ -1,0 +1,31 @@
+{
+  "term": "Spring 2027",
+  "sections": [
+    {"section_id": "CSCI110-01", "course": "CSCI 110", "days": ["Mon", "Wed"], "start": "09:25", "end": "10:40", "seats_open": 12, "modality": "in_person"},
+    {"section_id": "CSCI110-02", "course": "CSCI 110", "days": ["Tue", "Thu"], "start": "11:10", "end": "12:25", "seats_open": 5, "modality": "in_person"},
+    {"section_id": "CSCI110-03", "course": "CSCI 110", "days": ["Mon", "Wed"], "start": "18:00", "end": "19:15", "seats_open": 20, "modality": "online_sync"},
+    {"section_id": "CSCI210-01", "course": "CSCI 210", "days": ["Mon", "Wed"], "start": "13:00", "end": "14:15", "seats_open": 8, "modality": "in_person"},
+    {"section_id": "CSCI210-02", "course": "CSCI 210", "days": ["Tue", "Thu"], "start": "09:25", "end": "10:40", "seats_open": 3, "modality": "in_person"},
+    {"section_id": "CSCI230-01", "course": "CSCI 230", "days": ["Tue", "Thu"], "start": "14:30", "end": "15:45", "seats_open": 10, "modality": "in_person"},
+    {"section_id": "CSCI230-02", "course": "CSCI 230", "days": ["Fri"], "start": "09:00", "end": "11:45", "seats_open": 15, "modality": "in_person"},
+    {"section_id": "CSCI310-01", "course": "CSCI 310", "days": ["Mon", "Wed"], "start": "09:25", "end": "10:40", "seats_open": 6, "modality": "in_person"},
+    {"section_id": "CSCI310-02", "course": "CSCI 310", "days": ["Tue", "Thu"], "start": "13:00", "end": "14:15", "seats_open": 9, "modality": "in_person"},
+    {"section_id": "CSCI320-01", "course": "CSCI 320", "days": ["Mon", "Wed"], "start": "14:30", "end": "15:45", "seats_open": 11, "modality": "in_person"},
+    {"section_id": "CSCI340-01", "course": "CSCI 340", "days": ["Tue", "Thu"], "start": "14:00", "end": "15:15", "seats_open": 7, "modality": "in_person"},
+    {"section_id": "CSCI340-02", "course": "CSCI 340", "days": ["Mon", "Wed", "Fri"], "start": "11:00", "end": "11:50", "seats_open": 14, "modality": "in_person"},
+    {"section_id": "CSCI350-01", "course": "CSCI 350", "days": ["Tue", "Thu"], "start": "16:00", "end": "17:15", "seats_open": 0, "modality": "in_person"},
+    {"section_id": "MATH120-01", "course": "MATH 120", "days": ["Mon", "Wed", "Fri"], "start": "08:00", "end": "08:50", "seats_open": 18, "modality": "in_person"},
+    {"section_id": "MATH120-02", "course": "MATH 120", "days": ["Tue", "Thu"], "start": "11:10", "end": "12:25", "seats_open": 4, "modality": "in_person"},
+    {"section_id": "MATH220-01", "course": "MATH 220", "days": ["Mon", "Wed"], "start": "10:40", "end": "11:55", "seats_open": 9, "modality": "in_person"},
+    {"section_id": "MATH220-02", "course": "MATH 220", "days": ["Tue", "Thu"], "start": "16:00", "end": "17:15", "seats_open": 13, "modality": "in_person"},
+    {"section_id": "MATH230-01", "course": "MATH 230", "days": ["Mon", "Wed", "Fri"], "start": "09:00", "end": "09:50", "seats_open": 10, "modality": "in_person"},
+    {"section_id": "MATH250-01", "course": "MATH 250", "days": ["Tue", "Thu"], "start": "13:00", "end": "14:15", "seats_open": 6, "modality": "in_person"},
+    {"section_id": "STAT205-01", "course": "STAT 205", "days": ["Tue", "Thu"], "start": "14:30", "end": "15:45", "seats_open": 16, "modality": "in_person"},
+    {"section_id": "STAT205-W1", "course": "STAT 205", "days": [], "start": null, "end": null, "seats_open": 25, "modality": "online_async"},
+    {"section_id": "ENG101-01", "course": "ENG 101", "days": ["Mon", "Wed"], "start": "09:25", "end": "10:40", "seats_open": 2, "modality": "in_person"},
+    {"section_id": "ENG101-02", "course": "ENG 101", "days": ["Tue", "Thu"], "start": "09:25", "end": "10:40", "seats_open": 11, "modality": "in_person"},
+    {"section_id": "ENG101-03", "course": "ENG 101", "days": ["Fri"], "start": "10:00", "end": "12:45", "seats_open": 7, "modality": "in_person"},
+    {"section_id": "ENG210-01", "course": "ENG 210", "days": ["Mon", "Wed"], "start": "14:00", "end": "15:15", "seats_open": 12, "modality": "online_sync"},
+    {"section_id": "PHIL120-W1", "course": "PHIL 120", "days": [], "start": null, "end": null, "seats_open": 30, "modality": "online_async"}
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "general": {
+    "min_total_credits": 120,
+    "min_overall_gpa": 2.0
+  },
+  "majors": {
+    "Computer Science": {
+      "required": ["CSCI 110", "CSCI 210", "CSCI 230", "CSCI 310", "CSCI 330", "CSCI 340", "MATH 120", "MATH 220"],
+      "choose_one": [["MATH 230", "MATH 250", "STAT 205"]]
+    }
+  }
+}

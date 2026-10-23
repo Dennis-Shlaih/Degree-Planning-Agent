@@ -1,0 +1,212 @@
+[
+ {
+  "id": "elig_s101_csci310",
+  "category": "eligibility",
+  "question": "Can student S101 take CSCI 310 in Spring 2027?",
+  "fields": {
+   "intent": "eligibility",
+   "student_id": "S101",
+   "course": "CSCI 310"
+  },
+  "expected_status": "answered",
+  "expected_value": "eligible",
+  "expected_tools": [
+   "check_eligibility"
+  ],
+  "allowed_tools": [
+   "get_student_record",
+   "get_course"
+  ],
+  "max_tool_calls": 2
+ },
+ {
+  "id": "elig_s102_csci310",
+  "category": "eligibility",
+  "question": "I'm S102. Am I eligible for CSCI 310 next term?",
+  "fields": {
+   "intent": "eligibility",
+   "student_id": "S102",
+   "course": "CSCI 310"
+  },
+  "expected_status": "answered",
+  "expected_value": "not_eligible",
+  "expected_tools": [
+   "check_eligibility"
+  ],
+  "allowed_tools": [
+   "get_student_record",
+   "get_course"
+  ],
+  "max_tool_calls": 2
+ },
+ {
+  "id": "conflict_back_to_back",
+  "category": "conflicts",
+  "question": "Do sections CSCI310-01 and MATH220-01 conflict?",
+  "fields": {
+   "intent": "conflicts",
+   "section_ids": [
+    "CSCI310-01",
+    "MATH220-01"
+   ]
+  },
+  "expected_status": "answered",
+  "expected_value": [],
+  "expected_tools": [
+   "schedule_conflicts"
+  ],
+  "allowed_tools": [
+   "find_sections"
+  ],
+  "max_tool_calls": 1
+ },
+ {
+  "id": "sections_csci210",
+  "category": "sections",
+  "question": "Which sections of CSCI 210 are offered in Spring 2027?",
+  "fields": {
+   "intent": "sections",
+   "course": "CSCI 210"
+  },
+  "expected_status": "answered",
+  "expected_value": [
+   "CSCI210-01",
+   "CSCI210-02"
+  ],
+  "expected_tools": [
+   "find_sections"
+  ],
+  "allowed_tools": [
+   "get_course"
+  ],
+  "max_tool_calls": 1
+ },
+ {
+  "id": "credits_remaining_s106",
+  "category": "records",
+  "question": "How many more credits does student S106 need to reach 120?",
+  "fields": {
+   "intent": "credits_remaining",
+   "student_id": "S106"
+  },
+  "expected_status": "answered",
+  "expected_value": 93,
+  "expected_tools": [
+   "get_student_record"
+  ],
+  "allowed_tools": [],
+  "max_tool_calls": 1
+ },
+ {
+  "id": "gpa_s101",
+  "category": "records",
+  "question": "What is student S101's GPA?",
+  "fields": {
+   "intent": "gpa",
+   "student_id": "S101"
+  },
+  "expected_status": "answered",
+  "expected_value": 3.41,
+  "expected_tools": [
+   "get_student_record"
+  ],
+  "allowed_tools": [],
+  "max_tool_calls": 1
+ },
+ {
+  "id": "instructor_csci310",
+  "category": "not_available",
+  "question": "Who is teaching CSCI 310 in Spring 2027?",
+  "fields": {
+   "intent": "not_available"
+  },
+  "expected_status": "not_available",
+  "expected_value": null,
+  "expected_tools": [],
+  "allowed_tools": [
+   "get_course",
+   "find_sections",
+   "get_student_record"
+  ],
+  "max_tool_calls": 2
+ },
+ {
+  "id": "waiver_csci310",
+  "category": "needs_person",
+  "question": "I'm S102 and I got a D in CSCI 210. Can you waive the C requirement so I can take CSCI 310?",
+  "fields": {
+   "intent": "needs_person"
+  },
+  "expected_status": "needs_person",
+  "expected_value": null,
+  "expected_tools": [],
+  "allowed_tools": [
+   "get_course",
+   "find_sections",
+   "get_student_record",
+   "check_eligibility"
+  ],
+  "max_tool_calls": 3
+ },
+ {
+  "id": "no_student_id_gpa",
+  "category": "not_available",
+  "question": "What's my GPA?",
+  "fields": {
+   "intent": "not_available"
+  },
+  "expected_status": "not_available",
+  "expected_value": null,
+  "expected_tools": [],
+  "allowed_tools": [],
+  "max_tool_calls": 2
+ },
+ {
+  "id": "courses_csci320_eng210",
+  "category": "multi_step",
+  "question": "Do the Spring 2027 sections of CSCI 320 and ENG 210 conflict?",
+  "fields": {
+   "intent": "course_conflicts",
+   "courses": [
+    "CSCI 320",
+    "ENG 210"
+   ]
+  },
+  "expected_status": "answered",
+  "expected_value": [
+   [
+    "CSCI320-01",
+    "ENG210-01"
+   ]
+  ],
+  "expected_tools": [
+   "find_sections",
+   "schedule_conflicts"
+  ],
+  "allowed_tools": [
+   "get_course"
+  ],
+  "max_tool_calls": 3
+ },
+ {
+  "id": "outage_stat205_sections",
+  "category": "outage",
+  "question": "Which sections of STAT 205 are offered in Spring 2027?",
+  "fields": {
+   "intent": "sections",
+   "course": "STAT 205"
+  },
+  "expected_status": "answered",
+  "expected_value": [
+   "STAT205-01",
+   "STAT205-W1"
+  ],
+  "expected_tools": [
+   "find_sections"
+  ],
+  "allowed_tools": [
+   "get_course"
+  ],
+  "max_tool_calls": 1
+ }
+]
