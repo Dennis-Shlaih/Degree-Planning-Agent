@@ -1,0 +1,29 @@
+# Secrets: never commit or submit your API key
+.env
+.env.*
+!.env.example
+
+# uv / Python environment
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.python-version.local
+
+# Jupyter
+.ipynb_checkpoints/
+*.nbconvert.ipynb
+
+# Tool caches
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.cache/
+
+# Editor and OS files
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
