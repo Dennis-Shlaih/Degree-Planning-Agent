@@ -4,7 +4,7 @@
     "RUBIN"
   ],
   "config": {
-    "system_prompt": " You are the Riverview College degree-planning assistant.\n        Use the available tools for all factual claims about Riverview courses, students, prerequisites, sections, schedules, credits, GPA, and degree requirements. Treat tool results as the source of truth; never invent or assume facts that the tools have not established.\n        For schedule conflict questions, if the user provides two or more exact section IDs, call schedule_conflicts directly with those IDs. Do not look up the sections or require a student ID. If the user provides course codes without section IDs, use find_sections to identify the relevant sections before checking conflicts.\n        For schedule conflict questions, set the answer's `value` to the `conflicts` field returned by schedule_conflicts, preserving its exact nested-list structure. Each conflict is a pair of section IDs, so return a list of pairs (for example, [[\"CSCI320-01\", \"ENG210-01\"]]) or an empty list ([]) when there are no conflicts. Never flatten the list of pairs into a single list of section IDs.\n        Call only the tools necessary to answer the student's question. Use multiple tools when the question requires combining information from different sources.\n        If required information is missing, ask the student to provide it when appropriate and return `not_available` with a null value. Do not guess a student's identity or substitute an assumed course or section.\n        Use `not_available` when the answer cannot be established from the available data. Use needs_person when the request requires a human decision or action that the tools cannot perform, including exceptions, waivers, overrides, or registration.\n        Return `answered` only when the tool results support the answer. Set `value` to the requested result using the appropriate data type, and set it to null for all other statuses. Keep the explanation accurate, concise, and between one and three sentences.",
+    "system_prompt": "You are the Riverview College degree-planning assistant.\n        Use the available tools for all factual claims about Riverview courses, students, prerequisites, sections, schedules, credits, GPA, and degree requirements. Treat tool results as the source of truth; never invent or assume facts that the tools have not established.\n        For schedule conflict questions, if the user provides two or more exact section IDs, call schedule_conflicts directly with those IDs. Do not look up the sections or require a student ID. If the user provides course codes without section IDs, use find_sections to identify the relevant sections before checking conflicts.\n        For schedule conflict questions, set the answer's `value` to the `conflicts` field returned by schedule_conflicts, preserving its exact nested-list structure. Each conflict is a pair of section IDs, so return a list of pairs (for example, [[\"CSCI320-01\", \"ENG210-01\"]]) or an empty list ([]) when there are no conflicts. Never flatten the list of pairs into a single list of section IDs.\n        Call only the tools necessary to answer the student's question. Use multiple tools when the question requires combining information from different sources.\n        If required information is missing, ask the student to provide it when appropriate and return `not_available` with a null value. Do not guess a student's identity or substitute an assumed course or section.\n        Use `not_available` when the answer cannot be established from the available data. Use needs_person when the request requires a human decision or action that the tools cannot perform, including exceptions, waivers, overrides, or registration.\n        Return `answered` only when the tool results support the answer. Set value to the requested result using the appropriate data type, and set it to null for all other statuses. Keep the explanation accurate, concise, and between one and three sentences.",
     "tool_descriptions": {},
     "model_call_limit": 8,
     "tool_call_limit": 10,
@@ -16,7 +16,7 @@
       "answer": {
         "status": "answered",
         "value": "eligible",
-        "explanation": "Student S101 meets all the prerequisites for CSCI 310 and is eligible to take the course in Spring 2027."
+        "explanation": "Student S101 meets all the prerequisites for CSCI 310 and is eligible to take it in Spring 2027."
       },
       "tool_calls": [
         {
@@ -108,7 +108,7 @@
           "CSCI210-01",
           "CSCI210-02"
         ],
-        "explanation": "There are two sections of CSCI 210 offered in Spring 2027: Section 01 meets Monday and Wednesday from 1:00 PM to 2:15 PM, and Section 02 meets Tuesday and Thursday from 9:25 AM to 10:40 AM. Both are in-person classes with some open seats."
+        "explanation": "There are two sections of CSCI 210 offered in Spring 2027: CSCI210-01 meets Monday and Wednesday from 1:00 PM to 2:15 PM, and CSCI210-02 meets Tuesday and Thursday from 9:25 AM to 10:40 AM. Both are in-person classes with open seats."
       },
       "tool_calls": [
         {
@@ -164,7 +164,7 @@
       "answer": {
         "status": "answered",
         "value": 3.41,
-        "explanation": "Student S101, Avery Chen, currently has a GPA of 3.41 based on completed courses up to now."
+        "explanation": "Student S101's current GPA is 3.41 based on their completed courses."
       },
       "tool_calls": [
         {
@@ -192,7 +192,7 @@
       "answer": {
         "status": "not_available",
         "value": null,
-        "explanation": "The available data does not include information about the instructors for courses in Spring 2027, so I cannot provide the name of the instructor for CSCI 310."
+        "explanation": "The available data does not include information about the instructors for courses in Spring 2027, so I cannot provide the name of the instructor teaching CSCI 310."
       },
       "tool_calls": [],
       "tools_used": [],
@@ -211,7 +211,7 @@
       "answer": {
         "status": "needs_person",
         "value": null,
-        "explanation": "I cannot waive course grade requirements. You will need to contact your academic advisor or the registrar's office at Riverview College to request a waiver for the C requirement in CSCI 210 to take CSCI 310."
+        "explanation": "I cannot grant waivers or override grade requirements. You will need to contact your academic advisor or the registrar's office to discuss the possibility of waiving the C grade requirement for CSCI 210 to enroll in CSCI 310."
       },
       "tool_calls": [],
       "tools_used": [],
@@ -230,7 +230,7 @@
       "answer": {
         "status": "not_available",
         "value": null,
-        "explanation": "I need your student ID to look up your GPA at Riverview College. Please provide your student ID."
+        "explanation": "I need your student ID to look up your GPA. Please provide your student ID."
       },
       "tool_calls": [],
       "tools_used": [],
@@ -254,7 +254,7 @@
             "ENG210-01"
           ]
         ],
-        "explanation": "The Spring 2027 sections CSCI320-01 and ENG210-01 conflict with each other as they overlap in meeting times on Monday and Wednesday afternoons."
+        "explanation": "The Spring 2027 sections CSCI320-01 and ENG210-01 conflict in their meeting times on Monday and Wednesday afternoons."
       },
       "tool_calls": [
         {
@@ -438,7 +438,7 @@
       "answer": {
         "status": "not_available",
         "value": null,
-        "explanation": "The room information for the section CSCI320-01 is not available in the current data sources."
+        "explanation": "I do not have information about the room locations for specific course sections. You may need to check the college's course schedule or contact the registrar's office for room details."
       },
       "tool_calls": [],
       "tools_used": [],
@@ -457,7 +457,7 @@
       "answer": {
         "status": "needs_person",
         "value": null,
-        "explanation": "Grade changes require review and approval by the academic administration or instructor. You should contact your professor or the registrar's office to discuss your grade and the possibility of a change."
+        "explanation": "Grade changes require approval from the academic administration or the instructor. You should contact your professor or the registrar's office to discuss your grade and the possibility of a change."
       },
       "tool_calls": [],
       "tools_used": [],
@@ -510,7 +510,7 @@
             "MATH220-01"
           ]
         ],
-        "explanation": "The sections CSCI340-02 and MATH220-01 have a scheduling conflict, but CSCI110-01 does not conflict with either of them."
+        "explanation": "The sections CSCI340-02 and MATH220-01 have a scheduling conflict, while CSCI110-01 does not conflict with either of the other two sections."
       },
       "tool_calls": [
         {
@@ -542,7 +542,7 @@
       "answer": {
         "status": "answered",
         "value": [],
-        "explanation": "The Spring 2027 sections of MATH 250 and CSCI 350 do not have any scheduling conflicts. They are held at different times on the same days."
+        "explanation": "The Spring 2027 sections of MATH 250 and CSCI 350 do not have any scheduling conflicts. You can take both courses without overlapping class times."
       },
       "tool_calls": [
         {
@@ -589,7 +589,7 @@
         "value": [
           "STAT205-W1"
         ],
-        "explanation": "For STAT 205 in Spring 2027, there is one online section available, which is STAT205-W1 and it is offered asynchronously online."
+        "explanation": "For STAT 205 in Spring 2027, there is one online section available, which is an asynchronous online section STAT205-W1."
       },
       "tool_calls": [
         {
