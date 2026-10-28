@@ -1,0 +1,616 @@
+{
+  "partners": [
+    "DENNIS",
+    "RUBIN"
+  ],
+  "config": {
+    "system_prompt": " You are the Riverview College degree-planning assistant.\n        Use the available tools for all factual claims about Riverview courses, students, prerequisites, sections, schedules, credits, GPA, and degree requirements. Treat tool results as the source of truth; never invent or assume facts that the tools have not established.\n        For schedule conflict questions, if the user provides two or more exact section IDs, call schedule_conflicts directly with those IDs. Do not look up the sections or require a student ID. If the user provides course codes without section IDs, use find_sections to identify the relevant sections before checking conflicts.\n        For schedule conflict questions, set the answer's `value` to the `conflicts` field returned by schedule_conflicts, preserving its exact nested-list structure. Each conflict is a pair of section IDs, so return a list of pairs (for example, [[\"CSCI320-01\", \"ENG210-01\"]]) or an empty list ([]) when there are no conflicts. Never flatten the list of pairs into a single list of section IDs.\n        Call only the tools necessary to answer the student's question. Use multiple tools when the question requires combining information from different sources.\n        If required information is missing, ask the student to provide it when appropriate and return `not_available` with a null value. Do not guess a student's identity or substitute an assumed course or section.\n        Use `not_available` when the answer cannot be established from the available data. Use needs_person when the request requires a human decision or action that the tools cannot perform, including exceptions, waivers, overrides, or registration.\n        Return `answered` only when the tool results support the answer. Set `value` to the requested result using the appropriate data type, and set it to null for all other statuses. Keep the explanation accurate, concise, and between one and three sentences.",
+    "tool_descriptions": {},
+    "model_call_limit": 8,
+    "tool_call_limit": 10,
+    "tool_max_retries": 2
+  },
+  "public_records": [
+    {
+      "question": "Can student S101 take CSCI 310 in Spring 2027?",
+      "answer": {
+        "status": "answered",
+        "value": "eligible",
+        "explanation": "Student S101 meets all the prerequisites for CSCI 310 and is eligible to take the course in Spring 2027."
+      },
+      "tool_calls": [
+        {
+          "name": "check_eligibility",
+          "args": {
+            "student_id": "S101",
+            "course_code": "CSCI 310"
+          }
+        }
+      ],
+      "tools_used": [
+        "check_eligibility"
+      ],
+      "error": null,
+      "id": "elig_s101_csci310",
+      "category": "eligibility",
+      "tools_note": "",
+      "checks": {
+        "answer": true,
+        "tools": true,
+        "budget": true
+      }
+    },
+    {
+      "question": "I'm S102. Am I eligible for CSCI 310 next term?",
+      "answer": {
+        "status": "answered",
+        "value": "not_eligible",
+        "explanation": "You are not eligible to take CSCI 310 next term because you have not completed the prerequisite course CSCI 210."
+      },
+      "tool_calls": [
+        {
+          "name": "check_eligibility",
+          "args": {
+            "student_id": "S102",
+            "course_code": "CSCI 310"
+          }
+        }
+      ],
+      "tools_used": [
+        "check_eligibility"
+      ],
+      "error": null,
+      "id": "elig_s102_csci310",
+      "category": "eligibility",
+      "tools_note": "",
+      "checks": {
+        "answer": true,
+        "tools": true,
+        "budget": true
+      }
+    },
+    {
+      "question": "Do sections CSCI310-01 and MATH220-01 conflict?",
+      "answer": {
+        "status": "answered",
+        "value": [],
+        "explanation": "The sections CSCI310-01 and MATH220-01 do not have any scheduling conflicts. You can take both without overlapping class times."
+      },
+      "tool_calls": [
+        {
+          "name": "schedule_conflicts",
+          "args": {
+            "section_ids": [
+              "CSCI310-01",
+              "MATH220-01"
+            ]
+          }
+        }
+      ],
+      "tools_used": [
+        "schedule_conflicts"
+      ],
+      "error": null,
+      "id": "conflict_back_to_back",
+      "category": "conflicts",
+      "tools_note": "",
+      "checks": {
+        "answer": true,
+        "tools": true,
+        "budget": true
+      }
+    },
+    {
+      "question": "Which sections of CSCI 210 are offered in Spring 2027?",
+      "answer": {
+        "status": "answered",
+        "value": [
+          "CSCI210-01",
+          "CSCI210-02"
+        ],
+        "explanation": "There are two sections of CSCI 210 offered in Spring 2027: Section 01 meets Monday and Wednesday from 1:00 PM to 2:15 PM, and Section 02 meets Tuesday and Thursday from 9:25 AM to 10:40 AM. Both are in-person classes with some open seats."
+      },
+      "tool_calls": [
+        {
+          "name": "find_sections",
+          "args": {
+            "course_code": "CSCI 210"
+          }
+        }
+      ],
+      "tools_used": [
+        "find_sections"
+      ],
+      "error": null,
+      "id": "sections_csci210",
+      "category": "sections",
+      "tools_note": "",
+      "checks": {
+        "answer": true,
+        "tools": true,
+        "budget": true
+      }
+    },
+    {
+      "question": "How many more credits does student S106 need to reach 120?",
+      "answer": {
+        "status": "answered",
+        "value": 93.0,
+        "explanation": "Student S106 has earned 27 credits so far and needs 93 more credits to reach the 120-credit minimum required for graduation."
+      },
+      "tool_calls": [
+        {
+          "name": "get_student_record",
+          "args": {
+            "student_id": "S106"
+          }
+        }
+      ],
+      "tools_used": [
+        "get_student_record"
+      ],
+      "error": null,
+      "id": "credits_remaining_s106",
+      "category": "records",
+      "tools_note": "",
+      "checks": {
+        "answer": true,
+        "tools": true,
+        "budget": true
+      }
+    },
+    {
+      "question": "What is student S101's GPA?",
+      "answer": {
+        "status": "answered",
+        "value": 3.41,
+        "explanation": "Student S101, Avery Chen, currently has a GPA of 3.41 based on completed courses up to now."
+      },
+      "tool_calls": [
+        {
+          "name": "get_student_record",
+          "args": {
+            "student_id": "S101"
+          }
+        }
+      ],
+      "tools_used": [
+        "get_student_record"
+      ],
+      "error": null,
+      "id": "gpa_s101",
+      "category": "records",
+      "tools_note": "",
+      "checks": {
+        "answer": true,
+        "tools": true,
+        "budget": true
+      }
+    },
+    {
+      "question": "Who is teaching CSCI 310 in Spring 2027?",
+      "answer": {
+        "status": "not_available",
+        "value": null,
+        "explanation": "The available data does not include information about the instructors for courses in Spring 2027, so I cannot provide the name of the instructor for CSCI 310."
+      },
+      "tool_calls": [],
+      "tools_used": [],
+      "error": null,
+      "id": "instructor_csci310",
+      "category": "not_available",
+      "tools_note": "",
+      "checks": {
+        "answer": true,
+        "tools": true,
+        "budget": true
+      }
+    },
+    {
+      "question": "I'm S102 and I got a D in CSCI 210. Can you waive the C requirement so I can take CSCI 310?",
+      "answer": {
+        "status": "needs_person",
+        "value": null,
+        "explanation": "I cannot waive course grade requirements. You will need to contact your academic advisor or the registrar's office at Riverview College to request a waiver for the C requirement in CSCI 210 to take CSCI 310."
+      },
+      "tool_calls": [],
+      "tools_used": [],
+      "error": null,
+      "id": "waiver_csci310",
+      "category": "needs_person",
+      "tools_note": "",
+      "checks": {
+        "answer": true,
+        "tools": true,
+        "budget": true
+      }
+    },
+    {
+      "question": "What's my GPA?",
+      "answer": {
+        "status": "not_available",
+        "value": null,
+        "explanation": "I need your student ID to look up your GPA at Riverview College. Please provide your student ID."
+      },
+      "tool_calls": [],
+      "tools_used": [],
+      "error": null,
+      "id": "no_student_id_gpa",
+      "category": "not_available",
+      "tools_note": "",
+      "checks": {
+        "answer": true,
+        "tools": true,
+        "budget": true
+      }
+    },
+    {
+      "question": "Do the Spring 2027 sections of CSCI 320 and ENG 210 conflict?",
+      "answer": {
+        "status": "answered",
+        "value": [
+          [
+            "CSCI320-01",
+            "ENG210-01"
+          ]
+        ],
+        "explanation": "The Spring 2027 sections CSCI320-01 and ENG210-01 conflict with each other as they overlap in meeting times on Monday and Wednesday afternoons."
+      },
+      "tool_calls": [
+        {
+          "name": "find_sections",
+          "args": {
+            "course_code": "CSCI 320"
+          }
+        },
+        {
+          "name": "find_sections",
+          "args": {
+            "course_code": "ENG 210"
+          }
+        },
+        {
+          "name": "schedule_conflicts",
+          "args": {
+            "section_ids": [
+              "CSCI320-01",
+              "ENG210-01"
+            ]
+          }
+        }
+      ],
+      "tools_used": [
+        "find_sections",
+        "find_sections",
+        "schedule_conflicts"
+      ],
+      "error": null,
+      "id": "courses_csci320_eng210",
+      "category": "multi_step",
+      "tools_note": "",
+      "checks": {
+        "answer": true,
+        "tools": true,
+        "budget": true
+      }
+    },
+    {
+      "question": "Which sections of STAT 205 are offered in Spring 2027?",
+      "answer": {
+        "status": "answered",
+        "value": [
+          "STAT205-01",
+          "STAT205-W1"
+        ],
+        "explanation": "There are two sections of STAT 205 offered in Spring 2027: one in-person section (STAT205-01) meeting Tuesdays and Thursdays from 14:30 to 15:45, and one online asynchronous section (STAT205-W1)."
+      },
+      "tool_calls": [
+        {
+          "name": "find_sections",
+          "args": {
+            "course_code": "STAT 205"
+          }
+        }
+      ],
+      "tools_used": [
+        "find_sections"
+      ],
+      "error": null,
+      "id": "outage_stat205_sections",
+      "category": "outage",
+      "tools_note": "",
+      "checks": {
+        "answer": true,
+        "tools": true,
+        "budget": true
+      }
+    }
+  ],
+  "my_cases": [
+    {
+      "id": "my_not_available_room",
+      "category": "not_available",
+      "question": "Which room is CSCI320-01 held in?",
+      "fields": {
+        "intent": "not_available"
+      },
+      "expected_status": "not_available",
+      "expected_value": null,
+      "expected_tools": [],
+      "allowed_tools": [
+        "find_sections",
+        "get_course"
+      ],
+      "max_tool_calls": 2
+    },
+    {
+      "id": "my_needs_person_grade_change",
+      "category": "needs_person",
+      "question": "I'm S107 and I think my C- in CSCI 110 was graded unfairly. Please change it to a C so I can take CSCI 210.",
+      "fields": {
+        "intent": "needs_person"
+      },
+      "expected_status": "needs_person",
+      "expected_value": null,
+      "expected_tools": [],
+      "max_tool_calls": 3
+    },
+    {
+      "id": "my_elig_s105_csci310",
+      "category": "eligibility",
+      "question": "I'm S105. Can I take CSCI 310 next term?",
+      "fields": {
+        "intent": "eligibility",
+        "student_id": "S105",
+        "course": "CSCI 310"
+      },
+      "expected_status": "answered",
+      "expected_value": "not_eligible",
+      "expected_tools": [
+        "check_eligibility"
+      ],
+      "max_tool_calls": 2
+    },
+    {
+      "id": "my_conflicts_touch_and_overlap",
+      "category": "conflicts",
+      "question": "Do any of CSCI110-01, MATH220-01 and CSCI340-02 conflict?",
+      "fields": {
+        "intent": "conflicts",
+        "section_ids": [
+          "CSCI110-01",
+          "MATH220-01",
+          "CSCI340-02"
+        ]
+      },
+      "expected_status": "answered",
+      "expected_value": [
+        [
+          "CSCI340-02",
+          "MATH220-01"
+        ]
+      ],
+      "expected_tools": [
+        "schedule_conflicts"
+      ],
+      "max_tool_calls": 1
+    },
+    {
+      "id": "my_multi_step_math250_csci350",
+      "category": "multi_step",
+      "question": "Do the Spring 2027 sections of MATH 250 and CSCI 350 conflict?",
+      "fields": {
+        "intent": "course_conflicts",
+        "courses": [
+          "MATH 250",
+          "CSCI 350"
+        ]
+      },
+      "expected_status": "answered",
+      "expected_value": [],
+      "expected_tools": [
+        "find_sections",
+        "schedule_conflicts"
+      ],
+      "max_tool_calls": 3
+    },
+    {
+      "id": "my_outage_stat205_online",
+      "category": "outage",
+      "question": "Which STAT 205 sections are online?",
+      "fields": {
+        "intent": "online_sections",
+        "course": "STAT 205"
+      },
+      "expected_status": "answered",
+      "expected_value": [
+        "STAT205-W1"
+      ],
+      "expected_tools": [
+        "find_sections"
+      ],
+      "max_tool_calls": 1
+    }
+  ],
+  "my_records": [
+    {
+      "question": "Which room is CSCI320-01 held in?",
+      "answer": {
+        "status": "not_available",
+        "value": null,
+        "explanation": "The room information for the section CSCI320-01 is not available in the current data sources."
+      },
+      "tool_calls": [],
+      "tools_used": [],
+      "error": null,
+      "id": "my_not_available_room",
+      "category": "not_available",
+      "tools_note": "",
+      "checks": {
+        "answer": true,
+        "tools": true,
+        "budget": true
+      }
+    },
+    {
+      "question": "I'm S107 and I think my C- in CSCI 110 was graded unfairly. Please change it to a C so I can take CSCI 210.",
+      "answer": {
+        "status": "needs_person",
+        "value": null,
+        "explanation": "Grade changes require review and approval by the academic administration or instructor. You should contact your professor or the registrar's office to discuss your grade and the possibility of a change."
+      },
+      "tool_calls": [],
+      "tools_used": [],
+      "error": null,
+      "id": "my_needs_person_grade_change",
+      "category": "needs_person",
+      "tools_note": "",
+      "checks": {
+        "answer": true,
+        "tools": true,
+        "budget": true
+      }
+    },
+    {
+      "question": "I'm S105. Can I take CSCI 310 next term?",
+      "answer": {
+        "status": "answered",
+        "value": "not_eligible",
+        "explanation": "You are not eligible to take CSCI 310 next term because you have not completed the prerequisite course CSCI 210."
+      },
+      "tool_calls": [
+        {
+          "name": "check_eligibility",
+          "args": {
+            "student_id": "S105",
+            "course_code": "CSCI 310"
+          }
+        }
+      ],
+      "tools_used": [
+        "check_eligibility"
+      ],
+      "error": null,
+      "id": "my_elig_s105_csci310",
+      "category": "eligibility",
+      "tools_note": "",
+      "checks": {
+        "answer": true,
+        "tools": true,
+        "budget": true
+      }
+    },
+    {
+      "question": "Do any of CSCI110-01, MATH220-01 and CSCI340-02 conflict?",
+      "answer": {
+        "status": "answered",
+        "value": [
+          [
+            "CSCI340-02",
+            "MATH220-01"
+          ]
+        ],
+        "explanation": "The sections CSCI340-02 and MATH220-01 have a scheduling conflict, but CSCI110-01 does not conflict with either of them."
+      },
+      "tool_calls": [
+        {
+          "name": "schedule_conflicts",
+          "args": {
+            "section_ids": [
+              "CSCI110-01",
+              "MATH220-01",
+              "CSCI340-02"
+            ]
+          }
+        }
+      ],
+      "tools_used": [
+        "schedule_conflicts"
+      ],
+      "error": null,
+      "id": "my_conflicts_touch_and_overlap",
+      "category": "conflicts",
+      "tools_note": "",
+      "checks": {
+        "answer": true,
+        "tools": true,
+        "budget": true
+      }
+    },
+    {
+      "question": "Do the Spring 2027 sections of MATH 250 and CSCI 350 conflict?",
+      "answer": {
+        "status": "answered",
+        "value": [],
+        "explanation": "The Spring 2027 sections of MATH 250 and CSCI 350 do not have any scheduling conflicts. They are held at different times on the same days."
+      },
+      "tool_calls": [
+        {
+          "name": "find_sections",
+          "args": {
+            "course_code": "MATH 250"
+          }
+        },
+        {
+          "name": "find_sections",
+          "args": {
+            "course_code": "CSCI 350"
+          }
+        },
+        {
+          "name": "schedule_conflicts",
+          "args": {
+            "section_ids": [
+              "MATH250-01",
+              "CSCI350-01"
+            ]
+          }
+        }
+      ],
+      "tools_used": [
+        "find_sections",
+        "find_sections",
+        "schedule_conflicts"
+      ],
+      "error": null,
+      "id": "my_multi_step_math250_csci350",
+      "category": "multi_step",
+      "tools_note": "",
+      "checks": {
+        "answer": true,
+        "tools": true,
+        "budget": true
+      }
+    },
+    {
+      "question": "Which STAT 205 sections are online?",
+      "answer": {
+        "status": "answered",
+        "value": [
+          "STAT205-W1"
+        ],
+        "explanation": "For STAT 205 in Spring 2027, there is one online section available, which is STAT205-W1 and it is offered asynchronously online."
+      },
+      "tool_calls": [
+        {
+          "name": "find_sections",
+          "args": {
+            "course_code": "STAT 205"
+          }
+        }
+      ],
+      "tools_used": [
+        "find_sections"
+      ],
+      "error": null,
+      "id": "my_outage_stat205_online",
+      "category": "outage",
+      "tools_note": "",
+      "checks": {
+        "answer": true,
+        "tools": true,
+        "budget": true
+      }
+    }
+  ]
+}
