@@ -108,7 +108,7 @@
           "CSCI210-01",
           "CSCI210-02"
         ],
-        "explanation": "There are two sections of CSCI 210 offered in Spring 2027: Section 01 meets Monday and Wednesday from 1:00 PM to 2:15 PM, and Section 02 meets Tuesday and Thursday from 9:25 AM to 10:40 AM. Both are in-person classes with open seats."
+        "explanation": "There are two sections of CSCI 210 offered in Spring 2027: CSCI210-01 meets Monday and Wednesday from 1:00 PM to 2:15 PM, and CSCI210-02 meets Tuesday and Thursday from 9:25 AM to 10:40 AM. Both are in-person classes with open seats."
       },
       "tool_calls": [
         {
@@ -164,7 +164,7 @@
       "answer": {
         "status": "answered",
         "value": 3.41,
-        "explanation": "Student S101's current GPA is 3.41 based on their completed courses so far."
+        "explanation": "Student S101, Avery Chen, currently has a GPA of 3.41 based on completed coursework at Riverview College."
       },
       "tool_calls": [
         {
@@ -211,7 +211,7 @@
       "answer": {
         "status": "needs_person",
         "value": null,
-        "explanation": "I cannot waive course grade requirements. You will need to contact your academic advisor or the registrar's office at Riverview College to request a waiver for the C requirement in CSCI 210 to take CSCI 310."
+        "explanation": "I cannot waive course grade requirements or prerequisites. You would need to contact your academic advisor or the registrar's office at Riverview College to discuss a possible waiver for the C requirement in CSCI 210 to take CSCI 310."
       },
       "tool_calls": [],
       "tools_used": [],
@@ -254,7 +254,7 @@
             "ENG210-01"
           ]
         ],
-        "explanation": "The Spring 2027 sections of CSCI 320 and ENG 210 do conflict. Both have classes on Monday and Wednesday with overlapping times."
+        "explanation": "The Spring 2027 sections CSCI320-01 and ENG210-01 conflict with each other as their meeting times overlap on Mondays and Wednesdays."
       },
       "tool_calls": [
         {
@@ -302,7 +302,7 @@
           "STAT205-01",
           "STAT205-W1"
         ],
-        "explanation": "There are two sections of STAT 205 offered in Spring 2027: one in-person section (STAT205-01) meeting Tuesdays and Thursdays from 14:30 to 15:45, and one online asynchronous section (STAT205-W1)."
+        "explanation": "There are two sections of STAT 205 offered in Spring 2027: one in-person section (STAT205-01) meeting Tuesdays and Thursdays from 2:30 to 3:45 PM, and one online asynchronous section (STAT205-W1)."
       },
       "tool_calls": [
         {
@@ -510,7 +510,7 @@
             "MATH220-01"
           ]
         ],
-        "explanation": "The sections CSCI340-02 and MATH220-01 have a scheduling conflict. CSCI110-01 does not conflict with either of the other two sections."
+        "explanation": "The sections CSCI340-02 and MATH220-01 have a scheduling conflict, while CSCI110-01 does not conflict with either of the other two sections."
       },
       "tool_calls": [
         {
@@ -589,7 +589,7 @@
         "value": [
           "STAT205-W1"
         ],
-        "explanation": "For STAT 205 in Spring 2027, there is one online asynchronous section available: STAT205-W1."
+        "explanation": "For STAT 205 in Spring 2027, there is one online section available, which is an asynchronous online section STAT205-W1."
       },
       "tool_calls": [
         {
